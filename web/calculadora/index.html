@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    .calculadora {
+      z-index: 0;
+      padding: 10px 0;
+      margin: auto;
+      width: 300px;
+      height: 610px;
+      display: flex;
+      border: 2px solid #000;
+      border-radius: 10px;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+    }
+    .com-luz {
+      background-color: #F3F3F3;
+      border-radius: 50%;
+      box-shadow: 0 0 5px 10px   #3960b6;
+    }
+    button  {
+      padding: 10px;
+      margin: 1px;
+      width: 50%;
+      height: 3%;
+      display: block;
+    }
+    .exp, .nums, .operadores {
+      display: flex;
+    }
+    .containerBotoes {
+      display: grid;
+      grid-row: 3;
+      max-width: max-content;
+      flex-direction: column;
+      align-items: center;
+      height: 30vh;
+    }
+    #calcField {
+      height: 1.7rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      max-width: max-content;
+      box-sizing: content-box;
+      padding: 2px;
+    }
+    #history {
+      background-color: rgba(0, 255, 136, 0.418);
+      border-radius: 10px;
+      border: 5px solid #000;
+      height: 290px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      z-index: 0;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    #history p {
+      color: #000000;
+      font-size: 1.5rem;
+      padding: 0 1.9rem 0 0;
+      z-index: -2;
+      font-weight: 700;
+      text-align: right;
+      width: 100%;
+    }
+
+    #history::-webkit-scrollbar {
+      width: 2px;
+      margin: 0 0 0 5px;
+      border-radius: 10px;
+    }
+
+    #history::-webkit-scrollbar-thumb {
+      background-color: #7a0d0d; 
+      border: 1px solid #000;
+    }
+
+    #history::-webkit-scrollbar-thumb:hover {
+      background-color: #7a0d0d; 
+      border: 1px solid #fff;
+    }
+
+    #borda-janela {
+      filter: blur();
+      border-radius: 30px;
+      padding: 12px;
+      width: 90%;
+      height: 300px;
+      z-index: 1;
+    }
+    .fundoCalc {
+      background-color: #3960b6;
+    }
+
+    #grades {
+      background-color:hsla(39, 100%, 50%, 0.158);
+      z-index: 1;
+      position: absolute;
+      display: grid;
+      grid-template-columns: repeat(35, 1fr);
+      grid-template-rows: repeat(33, 1fr);
+    }
+    #grades .grade {
+      z-index: -1;
+      box-shadow: 0 0 2px 2px  rgba(29, 151, 94, 0.1);
+      display: block;
+      background-color: rgba(0, 0, 0, 0);
+      border-bottom: 1px dotted #000;
+      border-right: 1px dotted #000;
+    }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #FFA500;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .button:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+  }
+  .button:active {
+    transform: scale(0.75);
+  }
+
+  #particles-js {
+  position: absolute;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+
+  </style>
+<script src="particles.js"></script>
+
+</head>
+
+<body>
+
+<div id="particles-js">
+</div>
+
+
+  <div class="calculadora fundoCalc">
+
+    <div id="borda-janela">
+
+      <div id="borda-alta"></div>
+
+      <div id="history" class="com-luz">
+        
+      </div>
+
+      <div id="borda-baixa"></div>
+
+    </div>
+
+    <div style="width: fit-content;">
+      <input id="calcField" type="text" dirname="">
+    </div>
+    
+    <div class="containerBotoes fundoCalc">
+
+      <div class="exp">
+        <button class="button" onclick="backspace()">	&#x232B;</button>
+        <button class="button" onclick="_clear()">C</button>
+        <button class="button" onclick="appendC('(')">(</button>
+        <button class="button" onclick="appendC(')')">)</button>
+      </div>
+      <div class="operadores">
+        <button class="button" onclick="appendC('+')">+</button>
+        <button class="button" onclick="appendC('-')">-</button>
+      </div>
+      <div class="operadores">
+        <button class="button" onclick="appendC('*')">*</button>
+        <button class="button" onclick="appendC('/')">/</button>
+      </div>
+      <div class="nums">
+        <button class="botoesNum button" onclick="appendC('1')">1</button>
+        <button class="botoesNum button" onclick="appendC('2')">2</button>
+        <button class="botoesNum button" onclick="appendC('3')">3</button>
+        <button class="botoesNum button" onclick="appendC('4')">4</button>
+  
+      </div>
+      <div class="nums">
+        
+        <button class="botoesNum button" onclick="appendC('5')">5</button>
+        <button class="botoesNum button" onclick="appendC('6')">6</button>
+        <button class="botoesNum button" onclick="appendC('7')">7</button>
+        <button class="botoesNum button" onclick="appendC('8')">8</button>
+        <button class="botoesNum button" onclick="appendC('9')">9</button>
+      </div>
+      <div class="nums">
+        <button class="botoesNum button" onclick="appendC('0')">0</button>
+        <button class="botoesNum button" onclick="exp()"> =</button>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    var historico_var = ""
+    const calcField = document.getElementById("calcField")
+    const history = document.getElementById("history")
+    var grade = ""
+    for (let i =0; i < 1155; i++) {
+      grade += `<div class="grade"></div>`
+    }
+
+
+    function criagrades() {
+      history.innerHTML = `
+        <div id="grades">
+              ${grade}
+            </div>`
+
+      var grades = document.getElementById("grades")
+      const { width, height } = history.getBoundingClientRect();
+      grades.style.width = `${width-10}px`;
+      grades.style.height = `${height-10}px`;
+    }
+
+    criagrades();
+
+    function appendC (e) {
+      calcField.value+=e
+    } 
+    function backspace () {
+      e = calcField.value
+      calcField.value = e.substr(0,e.length-1)
+
+    }
+    function _clear() {
+      calcField.value = ''
+    }
+    function exp () {
+      if (calcField.value.length  == 0) return;
+      try {
+        v = eval(calcField.value)
+        criagrades()
+        
+        historico_var = `<p>${calcField.value} = ${v}</p>` + historico_var
+        history.innerHTML += historico_var
+        calcField.value = ''
+      } catch (e) {
+        calcField.value = ''
+        criagrades()
+
+        historico_var = `<p>error</p>` + historico_var
+        history.innerHTML += historico_var
+
+      }
+    }
+    calcField.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        exp()
+      }
+    })
+
+    
+
+    particlesJS.load('particles-js', 'part.json', function() {
+  console.log('callback - particles.js config loaded');
+});
+  </script>
+</body>
+
+</html>

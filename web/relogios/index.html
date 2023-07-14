@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relógio</title>
+  <link rel="stylesheet" href="relogioAnalogico.css">
+  <style>
+    body {
+      background-image: url("ss.gif");
+      background-size: cover;
+    }
+    .relogioA {
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    } 
+    .relogioD {
+      height: 350px;
+      width: 620px;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .relogioDigital ul {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      background-color: rgba(245, 43, 43, 0.788);
+      border-radius: 20rem;
+      border: 12px solid rgba(15, 15, 15, 0.575);
+    }
+    .relogioDigital ul li {
+      display: inline-block; 
+      font-size: 7rem;
+      color: 2px solid rgba(190, 186, 186, 0.575);
+    }
+    .caixa {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .botao {
+      background-color: #FF4444;
+      color: #FFFFFF;
+      font-size: 18px;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s, transform 0.3s;
+      margin: 0 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+.botao:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 10px;
+  background-color: #FF4444;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: -1;
+  border-radius: 0 30px 30px 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.botao:hover {
+  background-color: #FF6666;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.botao:hover:before {
+  opacity: 1;
+}
+
+.botao:active {
+  background-color: #FF3333;
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+  </style>
+</head>
+
+<body>
+  <div id="into"></div>
+
+
+
+  <div class="caixa">
+    <button class="botao" onclick="criarRelogioDD()">Soi Leigue</button>
+    <button class="botao" onclick="criarRelogioAA()">Soi Helicóptero de Combati</button>
+  </div>
+ 
+  <script>
+    function criarRelogioDD () {
+      let c = document.getElementsByClassName('caixa')
+      c[0].style.display = 'none'
+      let d = document.getElementById('into')
+      d.innerHTML =     '<div class="relogioD"></div>' 
+      criarRelogioDigital()
+    }
+
+    function criarRelogioAA () {
+      let c = document.getElementsByClassName('caixa')
+      c[0].style.display = 'none'
+      let d = document.getElementById('into')
+      d.innerHTML =     '<div class="relogioA"></div>' 
+      criarRelogio()
+    }1
+
+  </script>
+  <script src="relogioAnalogico.js">
+  </script>
+    <script src="relogioDigital.js">
+    </script>
+</body>
+
+</html>

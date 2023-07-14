@@ -1,0 +1,152 @@
+.borda {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #000;
+  position: relative;
+}
+
+.borda::before,
+.borda::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.borda::before {
+  width: 95%;
+  height: 95%;
+  background-color: #7a1313;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 1),
+    0 0 10px rgb(248, 0, 0),
+    0 0 15px rgba(0, 0, 0, 1),
+    0 0 20px rgba(0, 0, 0, 1),
+    0 0 25px rgb(248, 0, 0),
+    0 0 30px rgba(0, 0, 0, 1);
+}
+
+.borda::after {
+  width: 85%;
+  height: 85%;
+  background-color: #e4b6b6;
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 1),
+    0 0 15px rgb(248, 0, 0);
+}
+
+.ponteiro {
+  width: 100%;
+  height: 1%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+}
+.ponteiroMin {
+  width: 70%;
+  height: 1%;
+} 
+.ponteiroHr {
+  width: 50%;
+  height: 1%;
+}
+.ponteiroS {
+  width: 65%;
+  height: 1%;
+}
+.parteI {
+  background-color: rgba(0, 0, 0, 0);
+  width: 50%;
+}
+.parteII {
+  height: 100%;
+  background-color: #000;
+  width: 50%;
+}
+.pontoHora {
+  position: absolute;
+  width: 1.5%;
+  height: 4%;
+  background-color: #000;
+  z-index: 1;
+}
+.doze {
+  left: 49.2%;
+  top: 10%;
+}
+.um {
+  left: 68.2%;
+  top: 15.2%;
+  transform: rotate(32deg);
+}
+.dois {
+  left: 83%;
+  top: 28.5%;
+  transform: rotate(60deg);
+}
+.tres {
+  left: 89%;
+  top: 48%;
+  transform: rotate(90deg);
+}
+.quatro {
+  left: 81.9%;
+  top: 67.6%;
+  transform: rotate(120deg);
+}
+
+.cinco {
+  left: 68.3%;
+  top: 81%;
+  transform: rotate(150deg);
+}
+
+.seis {
+  left: 49.2%;
+  top: 86%;
+}
+
+.sete {
+  left: 30.15%;
+  top: 81%;
+  transform: rotate(32deg);
+}
+.oito {
+  left: 15.8%;
+  top: 67.39%;
+  transform: rotate(58deg);
+}
+
+.nove {
+  left: 11%;
+  top: 48.1%;
+  transform: rotate(90deg);
+}
+
+.dez {
+  left: 16%;
+  top: 28.7%;
+  transform: rotate(122deg);
+}
+
+.onze {
+  left: 30.2%;
+  top: 14.7%;
+  transform: rotate(-29deg);
+}
+.prego {
+  z-index: 1;
+  position: absolute;
+  top: 49%;
+  left: 48.5%;
+  transform: translate(-50%, -50);
+  background-color: #000;
+  width: 3%;
+  height: 3%;
+  border-radius: 50%;
+}
